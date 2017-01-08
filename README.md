@@ -6,30 +6,30 @@ a handy controller script over [AWS SAM(AWS Serverless Application Model)](https
 ### package the bundle
 
 ```
-$ bash samctl.sh -a package -f <template_file> -s <stack_name>
+$ bash samctl.sh -a package -f <template_file> -s <stack_name> -S <s3_bucket>
 ```
 
 **template_file**:  default is ***template.yaml*** if not specified
 
 **stack_name**: default is ***serverless-stack*** if not specified
 
+**s3bucket**: your s3 bucket to save the lambda bundle, make your to create it with 
 
+`aws s3 mb s3://<your_s3bucket_name>`
+
+(you may modify `default_s3_bucket` variable in samctl.sh if you like)
 
 ### deploy the bundle
 
 ```
-$ bash samctl.sh -a deploy -f <template_file> -s <stack_name>
+$ bash samctl.sh -a deploy -f <template_file> -s <stack_name> -S <s3_bucket>
 ```
-
-
 
 ### delete the bundle
 
 ```
-$ bash samctl.sh -a DELETE -f <template_file> -s <stack_name>
+$ bash samctl.sh -a DELETE -f <template_file> -s <stack_name> -S <s3_bucket>
 ```
-
-
 
 ## Handy shortcuts
 

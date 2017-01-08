@@ -7,15 +7,15 @@ OPTIND=1
 # Initialize our own variables:
 output_file=""
 verbose=0
-s3bucket='pahud-lambda-tmp'
+default_s3_bucket='pahud-lambda-tmp'
 
 
 show_help() {
-    echo "Usage: samctl.sh -a <action> -f <template_file> -s <stack_name> "
+    echo "Usage: samctl.sh -a <action> -f <template_file> -s <stack_name> -S <s3_bucket>"
     echo "<action>: package|deploy|DELETE|p|d|D"
 }
 
-while getopts "h?a:s:f:" opt; do
+while getopts "h?a:s:f:S:" opt; do
     case "$opt" in
     h|\?)
         show_help
@@ -27,6 +27,8 @@ while getopts "h?a:s:f:" opt; do
         ;;
     f)  template_file=$OPTARG
         ;;
+    S)  s3bucket=$OPTARG
+        ;;
     esac
 done
 
@@ -37,6 +39,8 @@ stack_name=${stack_name-serverless-stack}
 template_file=${template_file-template.yaml}
 template_output_file="${template_file%%.yaml}-output.yaml"
 aws_profile=${aws_profile-default}
+s3bucket=${s3bucket-$default_s3_bucket}
+
 
 package() {
 	echo "[INFO] start packaging"
