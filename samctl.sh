@@ -1,6 +1,8 @@
 #!/bin/bash
 #
 # samctl.sh - a tiny SAM control script created by Pahud
+#
+# https://github.com/pahud/samctl
 # 
 
 OPTIND=1    
