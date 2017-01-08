@@ -7,7 +7,7 @@ OPTIND=1
 # Initialize our own variables:
 output_file=""
 verbose=0
-default_s3_bucket='pahud-lambda-tmp'
+default_s3_bucket='my-lambda-tmp'
 
 
 show_help() {
